@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>X SHARE</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-100 flex justify-center items-center min-w-screen min-h-screen flex-col gap-5">
+    <h1 class="text-5xl font-black text-slate-800"><span class="text-blue-500">X</span> <span class="text-gray-800">SHARE</span></h1>
+    <div class="p-4 bg-white rounded-lg shadow-lg">
+      <h1 class="text-2xl font-bold mb-4">Upload a File</h1>
+      <form method="POST" action="/" enctype="multipart/form-data" class="mb-4">
+        <input type="file" name="file" required class="mb-2 p-2 border border-gray-300">
+        <input type="submit" value="Upload" class="p-2 bg-blue-500 text-white rounded shadow-lg cursor-pointer">
+      </form>
+      <h2 class="text-xl font-bold mb-2">Uploaded Files</h2>
+      <ul class="list-disc list-inside">
+        {% for file in files %}
+          <li><a href="{{ url_for('download_file', filename=file) }}" class="text-blue-500 hover:underline">{{ file }}</a></li>
+        {% endfor %}
+      </ul>
+      <hr class="mt-3">
+      <p class="text-sm mt-5">Access this site from other devices on the network using: <a href="http://{{ ip_address }}:5000">http://{{ ip_address }}:5000</a></p>
+    </div>
+    <footer class="text-xs text-blue-500">
+        Developed by <a href="https://tharuux.github.io">THARUUX</a>
+    </footer>
+  </body>
+</html>
